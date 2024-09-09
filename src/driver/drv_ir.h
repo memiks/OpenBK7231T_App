@@ -23,9 +23,8 @@ class SpoofIrSender {
         void enableIROut(uint_fast8_t);
         void mark(unsigned int);
         void space(unsigned int);
-        void sendPulseDistanceWidthFromArray(uint_fast8_t, unsigned int,unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, uint32_t*, unsigned int, bool,bool, unsigned int, int_fast8_t);
-        void sendPulseDistanceWidthFromArray(PulsePauseWidthProtocolConstants *aProtocolConstants, uint32_t *aDecodedRawDataArray,
-        unsigned int aNumberOfBits, int_fast8_t aNumberOfRepeats);
+//        void sendPulseDistanceWidthFromArray(uint_fast8_t, unsigned int,unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, uint32_t*, unsigned int, bool,bool, unsigned int, int_fast8_t);
+//        void sendPulseDistanceWidthFromArray(PulsePauseWidthProtocolConstants *aProtocolConstants, uint32_t *aDecodedRawDataArray, unsigned int aNumberOfBits, int_fast8_t aNumberOfRepeats);
 		void SetParent(myIRsend *IRParent);
 	private:
 		myIRsend * Parent;

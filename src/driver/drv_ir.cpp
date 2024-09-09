@@ -324,33 +324,31 @@ class myIRsend : public IRsend {
 // will need to update to call our dynamic class
 void SpoofIrSender::enableIROut(uint_fast8_t freq){
 	if ( Parent != NULL){
-
+		Parent->enableIROut(freq,NULL);
 	}
 }
 void SpoofIrSender::mark(unsigned int  aMarkMicros){
 	if ( Parent != NULL){
-
+		Parent->mark(aMarkMicros);
 	}
 }
 void SpoofIrSender::space(unsigned int  aMarkMicros){
 	if ( Parent != NULL){
-
+		Parent->space(aMarkMicros);
 	}
 }
+
+/*
 void SpoofIrSender::sendPulseDistanceWidthFromArray(uint_fast8_t aFrequencyKHz, unsigned int aHeaderMarkMicros,
     unsigned int aHeaderSpaceMicros, unsigned int aOneMarkMicros, unsigned int aOneSpaceMicros, unsigned int aZeroMarkMicros,
     unsigned int aZeroSpaceMicros, uint32_t *aDecodedRawDataArray, unsigned int aNumberOfBits, bool aMSBFirst,
     bool aSendStopBit, unsigned int aRepeatPeriodMillis, int_fast8_t aNumberOfRepeats) {
-	if ( Parent != NULL){
-		Parent->sendPulseDistanceWidthFromArray(aFrequencyKHz, aHeaderMarkMicros, aHeaderSpaceMicros, aOneMarkMicros, aOneSpaceMicros, aZeroMarkMicros,  aZeroSpaceMicros, aDecodedRawDataArray, aNumberOfBits,  aMSBFirst,     aSendStopBit, aRepeatPeriodMillis, aNumberOfRepeats);
-	}
 }
 void SpoofIrSender::sendPulseDistanceWidthFromArray(PulsePauseWidthProtocolConstants *aProtocolConstants, uint32_t *aDecodedRawDataArray,
     unsigned int aNumberOfBits, int_fast8_t aNumberOfRepeats) {
-	if ( Parent != NULL){
-		Parent->sendPulseDistanceWidthFromArray(aProtocolConstants,aDecodedRawDataArray,aNumberOfBits,aNumberOfRepeats);
-	}
 }
+*/
+
 void SpoofIrSender::SetParent(myIRsend *IRParent)
 {
 	this->Parent=IRParent;
@@ -688,8 +686,8 @@ extern "C" void DRV_IR_Init(){
 	//cmddetail:"descr":"Sends IR commands in the form PROT-ADDR-CMD-REP-BITS, e.g. NEC-1-1A-0-0, note that -BITS is optional, it can be 0 for default one, so you can just do NEC-1-1A-0",
 	//cmddetail:"fn":"IR_Send_Cmd","file":"driver/drv_ir.cpp","requires":"",
 	//cmddetail:"examples":""}
-            CMD_RegisterCommand("IRSend",NULL,IR_Send_Cmd, NULL, NULL);
-            CMD_RegisterCommand("IRAC",NULL,IR_AC_Cmd, NULL, NULL);
+            CMD_RegisterCommand("IRSend",IR_Send_Cmd, NULL);
+            CMD_RegisterCommand("IRAC",IR_AC_Cmd, NULL);
 	//cmddetail:{"name":"IREnable","args":"[Str][1or0]",
 	//cmddetail:"descr":"Enable/disable aspects of IR.  IREnable RXTX 0/1 - enable Rx whilst Tx.  IREnable [protocolname] 0/1 - enable/disable a specified protocol",
 	//cmddetail:"fn":"IR_Enable","file":"driver/drv_ir.cpp","requires":"",
